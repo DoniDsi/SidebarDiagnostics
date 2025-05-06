@@ -321,7 +321,15 @@
     <value>Sıcaklık</value>
     <comment>Full name for GPU temp metric</comment>
   </data>
+  <data name="GPUHotSpot" xml:space="preserve">
+    <value>Sıcaklık</value>
+    <comment>Full name for GPU temp metric</comment>
+  </data>
   <data name="GPUTempLabel" xml:space="preserve">
+    <value>Derece</value>
+    <comment>Short label for GPU temp metric</comment>
+  </data>
+  <data name="GPUHotSpotLabel" xml:space="preserve">
     <value>Derece</value>
     <comment>Short label for GPU temp metric</comment>
   </data>

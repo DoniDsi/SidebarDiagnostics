@@ -848,6 +848,16 @@ namespace SidebarDiagnostics.Monitoring
                 }
             }
 
+            if (metrics.IsEnabled(MetricKey.GPUHotSpot))
+            {
+                ISensor _tempSensor = _hardware.Sensors.Where(s => s.SensorType == SensorType.Temperature && s.Index == 7).FirstOrDefault();
+
+                if (_tempSensor != null)
+                {
+                    _sensorList.Add(new OHMMetric(_tempSensor, MetricKey.GPUHotSpot, DataType.Celcius, null, roundAll, tempAlert, (useFahrenheit ? CelciusToFahrenheit.Instance : null)));
+                }
+            }
+
             if (metrics.IsEnabled(MetricKey.GPUFan))
             {
                 ISensor _fanSensor = _hardware.Sensors.Where(s => s.SensorType == SensorType.Control).OrderBy(s => s.Index).FirstOrDefault();
@@ -2125,7 +2135,7 @@ namespace SidebarDiagnostics.Monitoring
                         Enabled = true,
                         Order = 3,
                         Hardware = new HardwareConfig[0],
-                        Metrics = new MetricConfig[7]
+                        Metrics = new MetricConfig[8]
                         {
                             new MetricConfig(MetricKey.GPUCoreClock, true),
                             new MetricConfig(MetricKey.GPUVRAMClock, true),
@@ -2133,6 +2143,7 @@ namespace SidebarDiagnostics.Monitoring
                             new MetricConfig(MetricKey.GPUVRAMLoad, true),
                             new MetricConfig(MetricKey.GPUVoltage, true),
                             new MetricConfig(MetricKey.GPUTemp, true),
+                            new MetricConfig(MetricKey.GPUHotSpot, true),
                             new MetricConfig(MetricKey.GPUFan, true)
                         },
                         Params = new ConfigParam[5]
@@ -2402,6 +2413,7 @@ namespace SidebarDiagnostics.Monitoring
         GPUVRAMLoad = 14,
         GPUVoltage = 15,
         GPUTemp = 16,
+        GPUHotSpot = 31,
         GPUFan = 17,
 
         NetworkIP = 26,
@@ -3127,6 +3139,9 @@ namespace SidebarDiagnostics.Monitoring
                 case MetricKey.GPUTemp:
                     return Resources.GPUTemp;
 
+                case MetricKey.GPUHotSpot:
+                    return Resources.GPUHotSpot;
+
                 case MetricKey.GPUFan:
                     return Resources.GPUFan;
 
@@ -3219,6 +3234,9 @@ namespace SidebarDiagnostics.Monitoring
 
                 case MetricKey.GPUTemp:
                     return Resources.GPUTempLabel;
+
+                case MetricKey.GPUHotSpot:
+                    return Resources.GPUHotSpotLabel;
 
                 case MetricKey.GPUFan:
                     return Resources.GPUFanLabel;

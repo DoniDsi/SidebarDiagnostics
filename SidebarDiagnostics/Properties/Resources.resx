@@ -9,6 +9,7 @@
     that is mostly human readable. The generation and parsing of the 
     various data types are done through the TypeConverter classes 
     associated with the data types.
+    
     Example:
     
     ... ado.net/XML headers & schema ...
@@ -317,11 +318,19 @@
     <comment>Short label for GPU voltage metric</comment>
   </data>
   <data name="GPUTemp" xml:space="preserve">
-    <value>Temperature</value>
+    <value>Core</value>
+    <comment>Full name for GPU temp metric</comment>
+  </data>
+  <data name="GPUHotSpot" xml:space="preserve">
+    <value>Hotspot</value>
     <comment>Full name for GPU temp metric</comment>
   </data>
   <data name="GPUTempLabel" xml:space="preserve">
-    <value>Temp</value>
+    <value>Core</value>
+    <comment>Short label for GPU temp metric</comment>
+  </data>
+  <data name="GPUHotSpotLabel" xml:space="preserve">
+    <value>Hotspot</value>
     <comment>Short label for GPU temp metric</comment>
   </data>
   <data name="GPUVoltage" xml:space="preserve">
