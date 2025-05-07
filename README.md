@@ -28,6 +28,7 @@ https://www.paypal.me/arcaderenegade
 
 ### Supported OS
 
+* Windows 11
 * Windows 10
 * Windows 8.1
 * Windows 8
